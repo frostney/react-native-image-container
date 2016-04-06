@@ -1,0 +1,84 @@
+{
+  "name": "react-native-image-container",
+  "version": "1.0.0",
+  "description": "Image container for React Native",
+  "main": "dist/react-native-image-container.js",
+  "jsnext:main": "dist/react-native-image-container.es2015.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "rollup-babel-lib-bundler src/index.js",
+    "prepublish": "in-publish && npm run build || not-in-publish",
+    "lint": "eslint src",
+    "precommit": "npm run lint",
+    "test": "ava --verbose 'src/**/*.test.js'",
+    "coverage": "nyc --reporter lcov --reporter html ava 'src/**/*.test.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frostney/react-native-image-container.git"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "component",
+    "image",
+    "preload"
+  ],
+  "files": [
+    "dist",
+    "src"
+  ],
+  "ava": {
+    "babel": "inherit",
+    "require": "./ava-jsdom-setup"
+  },
+  "rollupBabelLibBundler": {
+    "moduleName": "ImageContainer",
+    "babel": {
+      "presets": [
+        "es2015-loose-rollup",
+        "react"
+      ],
+      "plugins": [
+        "transform-class-properties",
+        "transform-export-extensions",
+        "transform-object-rest-spread"
+      ]
+    }
+  },
+  "author": "Johannes Stein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frostney/react-native-image-container/issues"
+  },
+  "homepage": "https://github.com/frostney/react-native-image-container#readme",
+  "dependencies": {
+    "react-native": "^0.23.0"
+  },
+  "devDependencies": {
+    "ava": "^0.13.0",
+    "babel-eslint": "^6.0.2",
+    "babel-plugin-transform-class-properties": "^6.6.0",
+    "babel-plugin-transform-export-extensions": "^6.5.0",
+    "babel-plugin-transform-object-rest-spread": "^6.6.5",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-es2015-loose-rollup": "^7.0.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "codecov": "^1.0.1",
+    "enzyme": "^2.2.0",
+    "eslint": "^2.6.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.2.3",
+    "in-publish": "^2.0.0",
+    "nyc": "^6.1.1",
+    "react": "^0.14.8",
+    "react-addons-test-utils": "^0.14.8",
+    "react-dom": "^0.14.8",
+    "react-native-mock": "0.0.7",
+    "rimraf": "^2.5.2",
+    "rollup-babel-lib-bundler": "^2.5.5"
+  }
+}
